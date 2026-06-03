@@ -290,14 +290,27 @@
           return links.website;
         }
 
-        window.addEventListener("DOMContentLoaded", function () {
-          var destination = getDestination();
+        function updateStatus(message) {
           var status = document.getElementById("redirect-status");
-          var skipLink = document.getElementById("skip-link");
 
           if (status) {
-            status.textContent = "Redirecting you now...";
+            status.textContent = message;
           }
+        }
+
+        function tryCloseTab() {
+          try {
+            window.close();
+          } catch (error) {
+            updateStatus("You can close this tab after Dichit opens.");
+          }
+        }
+
+        window.addEventListener("DOMContentLoaded", function () {
+          var destination = getDestination();
+          var skipLink = document.getElementById("skip-link");
+
+          updateStatus("Redirecting you now...");
 
           if (skipLink) {
             skipLink.href = destination;
@@ -305,12 +318,15 @@
 
           window.setTimeout(function () {
             window.location.replace(destination);
-
-            // Auto close tab after redirecting
-            setTimeout(function () {
-              window.close();
-            }, 1000);
           }, 900);
+
+          window.setTimeout(function () {
+            tryCloseTab();
+          }, 1800);
+
+          window.setTimeout(function () {
+            updateStatus("If this tab stays open, you can close it manually.");
+          }, 2400);
         });
       })();
     </script>
