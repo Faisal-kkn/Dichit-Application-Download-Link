@@ -32,13 +32,30 @@
         overflow: hidden;
         padding: 24px;
         background:
-          radial-gradient(circle at 22% 24%, rgba(var(--primary-rgb), 0.22), transparent 28%),
-          radial-gradient(circle at 76% 18%, rgba(247, 183, 49, 0.22), transparent 24%),
-          radial-gradient(circle at 52% 76%, rgba(var(--primary-rgb), 0.18), transparent 30%),
+          radial-gradient(
+            circle at 22% 24%,
+            rgba(var(--primary-rgb), 0.22),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 76% 18%,
+            rgba(247, 183, 49, 0.22),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at 52% 76%,
+            rgba(var(--primary-rgb), 0.18),
+            transparent 30%
+          ),
           linear-gradient(145deg, #f8fffd 0%, #e9fbf7 48%, #fff8e8 100%);
         color: var(--text);
         font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
           sans-serif;
       }
 
@@ -116,7 +133,12 @@
         width: 42%;
         height: 100%;
         border-radius: inherit;
-        background: linear-gradient(90deg, var(--primary), var(--sky), var(--accent));
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--sky),
+          var(--accent)
+        );
         animation: load 1.15s ease-in-out infinite;
       }
 
@@ -255,7 +277,8 @@
         };
 
         function getDestination() {
-          var userAgent = navigator.userAgent || navigator.vendor || window.opera || "";
+          var userAgent =
+            navigator.userAgent || navigator.vendor || window.opera || "";
           var isAndroid = /android/i.test(userAgent);
           var isIos = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
           var isIpadOs =
@@ -282,6 +305,11 @@
 
           window.setTimeout(function () {
             window.location.replace(destination);
+
+            // Auto close tab after redirecting
+            setTimeout(function () {
+              window.close();
+            }, 1000);
           }, 900);
         });
       })();
@@ -299,7 +327,9 @@
       <div class="loader" aria-hidden="true"></div>
 
       <p class="status" id="redirect-status">Preparing your redirect...</p>
-      <a class="skip-link" id="skip-link" href="https://dichit.money">Continue manually</a>
+      <a class="skip-link" id="skip-link" href="https://dichit.money"
+        >Continue manually</a
+      >
       <noscript>
         <p class="status">
           JavaScript is disabled. Visit
