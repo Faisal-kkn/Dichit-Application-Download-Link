@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Downloading Dichit App...</title>
+    <script type="text/javascript">
+      window.onload = function () {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // iOS detection
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          window.location.href = "https://apple.com";
+        }
+        // Android detection
+        else if (/android/i.test(userAgent)) {
+          window.location.href = "https://google.com";
+        }
+        // Fallback for desktop users
+        else {
+          window.location.href = "https://yourwebsite.com";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <p>Redirecting you to the app store...</p>
+  </body>
+</html>
